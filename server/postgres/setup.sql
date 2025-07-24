@@ -1,13 +1,13 @@
 -- code to setup the db structure, should only be run once
 
-DROP MATERIALIZED VIEW section_changes;
-DROP MATERIALIZED VIEW course_changes;
-DROP TABLE timeslots;
-DROP TABLE enrollment;
-DROP TABLE sections;
-DROP TABLE courses;
-DROP TABLE components;
-DROP TABLE subjects;
+DROP MATERIALIZED VIEW IF EXISTS section_changes;
+DROP MATERIALIZED VIEW IF EXISTS course_changes;
+DROP TABLE IF EXISTS timeslots;
+DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS sections;
+DROP TABLE IF EXISTS courses;
+DROP TABLE IF EXISTS components;
+DROP TABLE IF EXISTS subjects;
 
 CREATE TABLE subjects (
     subject     VARCHAR(6)  PRIMARY KEY,
@@ -25,7 +25,6 @@ INSERT INTO subjects VALUES
 ('ARABIC', NULL),
 ('ARBUS', NULL),
 ('ARCH', 'Engineering'),
-('ARCHL', NULL),
 ('ARTS', NULL),
 ('ASL', NULL),
 ('ASTRN', NULL),
@@ -52,7 +51,6 @@ INSERT INTO subjects VALUES
 ('COGSCI', NULL),
 ('COMM', 'Math'),
 ('COMMST', NULL),
-('COMST', NULL),
 ('COOP', NULL),
 ('CROAT', NULL),
 ('CS', 'Math'),
@@ -61,7 +59,7 @@ INSERT INTO subjects VALUES
 ('DAC', NULL),
 ('DATSC', NULL),
 ('DEI', NULL),
-('DHUM', NULL),
+('DEVP', NULL),
 ('DUTCH', NULL),
 ('EARTH', NULL),
 ('EASIA', NULL),
@@ -91,7 +89,6 @@ INSERT INTO subjects VALUES
 ('GERON', NULL),
 ('GESC', NULL),
 ('GGOV', NULL),
-('GLOBAL', NULL),
 ('GLST', NULL),
 ('GRK', NULL),
 ('GS', NULL),
@@ -102,12 +99,10 @@ INSERT INTO subjects VALUES
 ('HLTH', NULL),
 ('HRM', NULL),
 ('HRTS', NULL),
-('HUMN', NULL),
 ('HUMSC', NULL),
 ('INDENT', NULL),
 ('INDEV', NULL),
 ('INDG', NULL),
-('INDS', NULL),
 ('INNOV', NULL),
 ('INTEG', NULL),
 ('INTST', NULL),
@@ -117,25 +112,23 @@ INSERT INTO subjects VALUES
 ('JS', NULL),
 ('KIN', NULL),
 ('KOREA', NULL),
+('LANG', NULL),
 ('LAT', NULL),
 ('LS', NULL),
 ('MATBUS', 'Math'),
 ('MATH', 'Math'),
 ('ME', 'Engineering'),
 ('MEDVL', NULL),
-('MENN', NULL),
 ('MGMT', NULL),
 ('MISC', NULL),
-('MLST', NULL),
 ('MNS', 'Engineering'),
-('MOHAWK', NULL),
-('MSCI', NULL),
 ('MSE', 'Engineering'),
 ('MTE', 'Engineering'),
 ('MTHEL', 'Math'),
 ('MUSIC', NULL),
 ('NANO', NULL),
 ('NE', 'Engineering'),
+('OLRD', NULL),
 ('OPTOM', NULL),
 ('PACS', NULL),
 ('PD', NULL),
@@ -179,15 +172,14 @@ INSERT INTO subjects VALUES
 ('TPM', NULL),
 ('TS', NULL),
 ('UCR', NULL),
+('UN', NULL),
 ('UNDC', NULL),
 ('UNIV', NULL),
 ('UU', NULL),
-('UX', NULL),
 ('VCULT', NULL),
 ('WATER', NULL),
 ('WIL', NULL),
 ('WKRPT', NULL),
-('WS', NULL),
 ('YC', NULL);
 
 CREATE TABLE components (

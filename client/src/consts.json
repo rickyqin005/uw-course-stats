@@ -1,8 +1,8 @@
 {
-    "firstWeek": "2024-09-02",
-    "lastWeek": "2024-12-02",
-    "firstDayOfClass": "2024-09-04",
-    "lastDayOfClass": "2024-12-03",
+    "firstWeek": "2025-09-01",
+    "lastWeek": "2025-12-01",
+    "firstDayOfClass": "2025-09-03",
+    "lastDayOfClass": "2025-12-02",
     "defaultCourseOptions": {
         "subjects": [
             {
@@ -47,23 +47,23 @@
     ],
     "importantDates": [
         {
-            "date": "2024-09-04",
+            "date": "2025-09-03",
             "label": "Classes Begin"
         },
         {
-            "date": "2024-09-11",
+            "date": "2025-09-10",
             "label": "Reserves removed"
         },
         {
-            "date": "2024-09-17",
+            "date": "2025-09-16",
             "label": "Last day to add a class"
         },
         {
-            "date": "2024-09-25",
+            "date": "2025-09-24",
             "label": "Drop with WD begins"
         },
         {
-            "date": "2024-11-20",
+            "date": "2025-11-19",
             "label": "Drop with WF begins"
         }
     ]

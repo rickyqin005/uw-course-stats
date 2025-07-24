@@ -6,17 +6,17 @@ const fs = require('fs');
 const path = require('path');
 
 import { createPGClient, arrsFormat, formatSQL, log } from './utility';
-const { subjects, daysOfWeekAbbrev } = require('./consts.json');
+const { term, subjects, daysOfWeekAbbrev } = require('./consts.json');
 
 const REFRESH_INTERVAL = 1800000;
 
 // refresh every 30 minutes
 export default async function refreshData() {
-    refresh();
-    setInterval(refresh, REFRESH_INTERVAL);
+    refresh(true);
+    setInterval(() => refresh(false), REFRESH_INTERVAL);
 }
 
-function refresh() {
+function refresh(first: boolean) {
     const courses: any[][] = [];
     const sections: any[][] = [];
     const enrollment: any[][] = [];
@@ -26,7 +26,7 @@ function refresh() {
     for(let i = 0; i < subjects.length; i++) {
         setTimeout(() =>
             fetchSubject(subjects[i], courses, sections, enrollment, timeslots)
-        , i*REFRESH_INTERVAL/subjects.length);
+        , (first ? 0 : i*REFRESH_INTERVAL/subjects.length));
     }
 
     // update DB all at once at the end
@@ -41,13 +41,13 @@ function refresh() {
         await pgClient.query(sql);
         await pgClient.end();
         console.timeEnd('updateDB');
-    }, REFRESH_INTERVAL);
+    }, (first ? 1000 : REFRESH_INTERVAL));
 }
 
 async function fetchSubject(subject: string, courses: any[][], sections: any[][], enrollment: any[][], timeslots: any[][]) {
     console.time(subject);
     try {
-        const webpage = await axios.get(`https://classes.uwaterloo.ca/cgi-bin/cgiwrap/infocour/salook.pl?level=under&sess=1249&subject=${subject}`);
+        const webpage = await axios.get(`https://classes.uwaterloo.ca/cgi-bin/cgiwrap/infocour/salook.pl?level=under&sess=${term}&subject=${subject}`);
         const $ = cheerio.load(webpage.data);
 
         $('body > main > p > table > tbody > tr')
